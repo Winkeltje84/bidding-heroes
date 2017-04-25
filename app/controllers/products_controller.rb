@@ -5,8 +5,10 @@ class ProductsController < ApplicationController
   def index
   end
 
-  def show
-  end
+    def show
+        @product = Product.find(params[:id])
+     end
+
 
   def create
   end
