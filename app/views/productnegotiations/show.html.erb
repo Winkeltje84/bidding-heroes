@@ -43,19 +43,15 @@
         <%= link_to "Finalize", product_path(@product_negotiation.product.id, sold: true), class: "btn btn-danger btn-md", method: :patch %>
         <% end %>
       </div>
-      <div class="col-xs-1">
-        <%= form_tag productnegotiation_singlebids_path(@product_negotiation.id) do %>
-        <label for="price">Counter Offer</label>
-        <%= text_field_tag :price %>
-        <%= submit_tag "Submit", class: "btn btn-md" %>
-        <% end %>
-      </div>   
       <div class="col-xs-2">
         <%= link_to "Cancel Negotiation", productnegotiation_path(@product_negotiation.id), class: "btn btn-danger btn-md", method: :patch %>
       </div>
       <div class="col-xs-2">
         <% if current_user.id != @current_negotiation_bids.last.user_id %>
-          <%= text_field :post, :title, size: 20 %> <%= link_to "Make Offer", :class => "btn btn-danger btn-md" %>
+          <%= form_tag productnegotiation_singlebids_path(@product_negotiation.id) do %>
+          <%= text_field_tag :price %>
+          <%= submit_tag "Counter Offer", class: "btn btn-danger btn-md" %>
+          <% end %>
         <% end %>
       </div>
     <% else %>
@@ -111,4 +107,3 @@
     </div>
   <% end %>
 <% end %>
-

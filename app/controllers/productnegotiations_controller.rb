@@ -10,7 +10,7 @@ class ProductnegotiationsController < ApplicationController
   end
 
   def show
-    @current_negotiation_bids = ProductNegotiation.get_bids_from_current_negotiation(@single_bids, params)
+    @current_negotiation_bids = ProductNegotiation.get_bids_from_current_negotiation(@single_bids, params).sort_by &:created_at
 
   end
 
